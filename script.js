@@ -1,4 +1,12 @@
 
+const buttons = document.querySelectorAll('#btn');
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    playGame(btn.value);
+  });
+});
+
 
 function getComputerChoice () {
     const randomNumber = Math.floor(Math.random() * 3);
@@ -15,24 +23,23 @@ function getComputerChoice () {
 
 
 
-function getHumanChoice () {
+// function getHumanChoice() {
+//   document.getElementById("rock").addEventListener("click", 
+//     function() {
+//       console.log("rock");
+//       return "rock";
+//     });
+// }
 
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach((button) => { button.addEventListener('click', () =>{console.log(button.id); 
-    }); 
-}); 
-}
-
-
-function playGame () {
+function playGame (value) {
 
 let humanScore = 0;
 let computerScore = 0;
 console.log(humanScore);
 
-function playRound () {
+function playRound() {
 
-  const humanChoice = getHumanChoice();
+  let humanChoice = value;
   const computerChoice = getComputerChoice();
 
 
@@ -75,6 +82,7 @@ function playRound () {
         console.log("It's a tie");
       } 
 };
+
 
 
 //playGame();
