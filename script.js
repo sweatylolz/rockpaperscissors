@@ -1,5 +1,11 @@
 
 const buttons = document.querySelectorAll('#btn');
+const scores = document.querySelector('#scores');
+const computerChoiceOutput = document.querySelector('#compChoice');
+const computerScoreInfo = document.querySelector('#compScore');
+const humanScoreInfo = document.querySelector('#humanScore');
+
+
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -12,38 +18,26 @@ function getComputerChoice () {
     const randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber == 0) {
     return "rock";
-}
+    }
     else if (randomNumber == 1) {
     return "paper";
-}
+    }   
     else {
     return "scissors";
+    }
 }
-}
-
-
-
-// function getHumanChoice() {
-//   document.getElementById("rock").addEventListener("click", 
-//     function() {
-//       console.log("rock");
-//       return "rock";
-//     });
-// }
 
 function playGame (value) {
 
 let humanScore = 0;
 let computerScore = 0;
-console.log(humanScore);
 
 function playRound() {
 
   let humanChoice = value;
   const computerChoice = getComputerChoice();
 
-
-
+  computerChoiceOutput.innerText = computerChoiceOutput.innerText + computerChoice;
   console.log("The computer chose "  + computerChoice + ".");
   console.log("You chose " + humanChoice + ".");
 
@@ -74,19 +68,16 @@ function playRound() {
     playRound();
       if (computerScore < humanScore){
         console.log("Human Wins");
+        humanScoreInfo.textContent = humanScoreInfo.textContent + humanScore;
       }
       else if (computerScore > humanScore){
         console.log("Computer Wins");
+        computerScoreInfo.textContent = computerScoreInfo.textContent + computerScore;
       }
       else {
         console.log("It's a tie");
       } 
 };
-
-
-
-//playGame();
-
 
 
 
