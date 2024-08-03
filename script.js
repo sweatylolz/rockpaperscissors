@@ -1,10 +1,12 @@
 
 const buttons = document.querySelectorAll('#btn');
-const scores = document.querySelector('#scores');
+const content = document.querySelector('#scores');
 const computerChoiceOutput = document.querySelector('#compChoice');
 const computerScoreInfo = document.querySelector('#compScore');
 const humanScoreInfo = document.querySelector('#humanScore');
 
+const outcome = document.createElement("p"); 
+content.appendChild(outcome);
 
 
 buttons.forEach((btn) => {
@@ -37,7 +39,7 @@ function playRound() {
   let humanChoice = value;
   const computerChoice = getComputerChoice();
 
-  computerChoiceOutput.innerText = computerChoiceOutput.innerText + computerChoice;
+  computerChoiceOutput.innerText += " " + computerChoice;
   console.log("The computer chose "  + computerChoice + ".");
   console.log("You chose " + humanChoice + ".");
 
@@ -68,14 +70,17 @@ function playRound() {
     playRound();
       if (computerScore < humanScore){
         console.log("Human Wins");
-        humanScoreInfo.textContent = humanScoreInfo.textContent + humanScore;
+        humanScoreInfo.textContent += humanScore;
+        outcome.innerText = "You win!";
       }
       else if (computerScore > humanScore){
         console.log("Computer Wins");
-        computerScoreInfo.textContent = computerScoreInfo.textContent + computerScore;
+        computerScoreInfo.textContent += computerScore;
+        outcome.innerText = "Computer wins :/";
       }
       else {
         console.log("It's a tie");
+        outcome.innerText = "It was a tie.";
       } 
 };
 
