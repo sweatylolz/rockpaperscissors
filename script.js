@@ -11,7 +11,7 @@ content.appendChild(outcome);
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    playGame(btn.value);
+    playRound(btn.value);
   });
 });
 
@@ -29,15 +29,15 @@ function getComputerChoice () {
     }
 }
 
-function playGame (value) {
 
-let humanScore = 0;
-let computerScore = 0;
 
-function playRound(){
-
+function playRound(value){
+  let humanScore = 0;
+  let computerScore = 0;
   let humanChoice = value;
   const computerChoice = getComputerChoice();
+  const computerScoreInfo = document.querySelector('#compScore');
+  const humanScoreInfo = document.querySelector('#humanScore');
   
   computerChoiceOutput.innerText = "Computer Chose: ";
   computerChoiceOutput.innerText += " " + computerChoice;
@@ -83,10 +83,5 @@ function playRound(){
         outcome.innerText = "You win!";
         return "Nice! You Win! Scissors beats Paper";
       }
+      
   };
-    
-
-
-    playRound();
-  
-};
